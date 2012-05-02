@@ -18,10 +18,15 @@ class FMS(object):
         response = requests.get(url, params=kwargs)
         xml_dict = xml_to_dict(response.content)
 
+        print xml_dict
         if xml_dict['level'] == 'error':
             raise ValueError(xml_dict['description'])
 
         return xml_dict
 
-    def getServerStats(self):
-        return self._call_api('getServerStats')
+    def getApps(self, appInst):
+        return self._call_api('getNetStreams', appInst=appInst)
+
+    def getActiveInstances(self, **kwargs):
+        return self._call_api('getActiveInstances', **kwargs)
+
