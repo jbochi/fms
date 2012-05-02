@@ -24,9 +24,8 @@ class FMS(object):
 
         return xml_dict
 
-    def getApps(self, appInst):
-        return self._call_api('getNetStreams', appInst=appInst)
-
     def getActiveInstances(self, **kwargs):
         return self._call_api('getActiveInstances', **kwargs)
 
+    def getServerStats(self):
+        return self._call_api('getServerStats')
