@@ -8,6 +8,9 @@ class FMS(object):
         self.username = username
         self.password = password
 
+    def __repr__(self):
+        return u'<fms server %s>' % self.server
+
     def _call_api(self, method, **kwargs):
         url = "http://{server}:{port}/admin/{method}".format(
             server=self.server,
